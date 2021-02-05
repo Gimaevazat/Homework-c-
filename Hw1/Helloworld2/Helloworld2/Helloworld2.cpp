@@ -5,7 +5,8 @@
 
 int main()
 {
-    std::cout << "Second2\n";
+    std::cout << "Second2 and main\n
+        Rebase HEAD to";
 
 }
 
