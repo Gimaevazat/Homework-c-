@@ -1,11 +1,11 @@
-// Helloworld.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Helloworld2.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World and Sun!\n";
+    std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
