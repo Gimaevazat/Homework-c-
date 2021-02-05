@@ -6,8 +6,12 @@
 int main()
 {
 
+<<<<<<< HEAD
     std::cout << "Second branch\n";
 
+=======
+    std::cout << "Main branch\n";
+>>>>>>> main
 
 }
 
