@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Main and second branch\n";
+    std::cout << "Main branch\n";
 
 }
 
