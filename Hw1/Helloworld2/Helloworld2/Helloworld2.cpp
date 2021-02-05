@@ -5,12 +5,12 @@
 
 int main()
 {
-<<<<<<< HEAD
-    std::cout << "Second and main branch\n";
-=======
-    std::cout << "Main branch\n";
 
->>>>>>> main
+    std::cout << "Second branch\n";
+
+    std::cout << "Main branch\n";
+    std::cout << "Second and main branch\n";
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
