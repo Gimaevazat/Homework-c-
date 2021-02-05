@@ -5,9 +5,8 @@
 
 int main()
 {
-    std::cout << "Hello World and Mooon!\n";
-    std::cout << "1\n";
-    std::cout << "23\n";
+    std::cout << "Main branch\n";
+ 
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
