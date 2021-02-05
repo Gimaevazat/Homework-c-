@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Second2 and main\n
+    std::cout << "Main and second2 branch\n
         Rebase HEAD to";
 
 }
