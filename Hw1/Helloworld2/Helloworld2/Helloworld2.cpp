@@ -8,8 +8,6 @@ int main()
 
     std::cout << "Second branch\n";
 
-    std::cout << "Main branch\n";
-    std::cout << "Main and second branch\n";
 
 }
 
