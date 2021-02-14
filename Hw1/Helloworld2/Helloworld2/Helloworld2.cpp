@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Hello from branch" << std::endl;
+    std::cout << "Hello from master" << std::endl;
 
 }
 
