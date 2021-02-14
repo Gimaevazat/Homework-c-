@@ -5,8 +5,7 @@
 
 int main()
 {
-    std::cout << "Main branch" << std::endl <<
-        "Rebase HEAD to";
+    std::cout << "Hello from branch" << std::endl;
 
 }
 
