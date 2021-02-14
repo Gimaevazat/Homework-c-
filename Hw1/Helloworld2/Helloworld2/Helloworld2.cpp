@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+void d(){}
 
 int main()
 {
