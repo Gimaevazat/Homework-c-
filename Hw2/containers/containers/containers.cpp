@@ -5,6 +5,7 @@
 #include <list>
 #include <forward_list>
 #include <array>
+#include <deque>
 
 
 class Timer {
@@ -53,7 +54,7 @@ private:
 
 int main()
 {
-    const int sz = 10000;
+    const int sz = 100000;
     //sort vector
 
     std::vector <int> a;
@@ -61,12 +62,12 @@ int main()
         a.push_back(sz - i);
     }
 
-    Timer *timer = new Timer;
+    Timer *timer_vector = new Timer;
     sort(a.begin(), a.end());
-    timer->stop();
+    timer_vector->stop();
 
-    std::cout << "Vector sorted by sort()" << std::endl;
-    timer->~Timer();
+    std::cout << "std::vector sorted by sort()" << std::endl;
+    timer_vector->~Timer();
     a.clear();
     std::cout << std::endl;
     
@@ -77,12 +78,12 @@ int main()
         b.push_front(i);
     }
 
-    timer->reset();
+    Timer* timer_list = new Timer;
     b.sort();
-    timer->stop();
+    timer_list->stop();
 
-    std::cout << "List sorted by sort()" << std::endl;
-    timer->~Timer();
+    std::cout << "std::list sorted by sort()" << std::endl;
+    timer_list->~Timer();
     b.clear();
     std::cout << std::endl;
     
@@ -93,29 +94,46 @@ int main()
         c.push_front(i);
     }
 
-    timer->reset();
+    Timer* timer_forward_list = new Timer;
     c.sort();
-    timer->stop();
+    timer_forward_list->stop();
 
-    std::cout << "Forward_ist sorted by sort()" << std::endl;
-    timer->~Timer();
+    std::cout << "std::forward_ist sorted by sort()" << std::endl;
+    timer_forward_list->~Timer();
     c.clear();
     std::cout << std::endl;
 
     //sort std::array by sort()
-    /*
-    std::array <int, 1000> d;
-    for (int i = 0; i < 1000; i++) {
-        d.at(i) = 1000 - i;
+
+    std::array <int, sz> d;
+    for (int i = 0; i < sz; i++) {
+        d[i] = sz - i;
     }
 
-    timer->reset();
+    Timer* timer_array = new Timer;
     std::sort(d.begin(), d.end());
-    timer->stop();
+    timer_array->stop();
 
     std::cout << "std::array sorted by sort()" << std::endl;
-    timer->~Timer();
-    std::cout << std::endl;*/
+    timer_array->~Timer();
+    std::cout << std::endl;
+
+    //sort std::deque by sort()
+
+    std::deque <int> e;
+    for (int i = 0; i < sz; i++) {
+        e.push_front(i);
+    }
+
+    Timer* timer_deque = new Timer;
+    std::sort(e.begin(), e.end());
+    timer_deque->stop();
+
+    std::cout << "std::deque sorted by sort()" << std::endl;
+    timer_deque->~Timer();
+    e.clear();
+    std::cout << std::endl;
+
 
     return 0;
 }
