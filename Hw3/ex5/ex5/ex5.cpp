@@ -7,11 +7,14 @@
 #include <boost/multi_index/random_access_index.hpp>
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/key.hpp>
+#include <boost/multi_index/mem_fun.hpp>
 #include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <string>
 #include <vector>
+#include <boost/tokenizer.hpp>
+#include <typeinfo>
 
 struct Rec {
 	std::string name, surname, phone;
@@ -22,16 +25,21 @@ struct Byname {};
 struct Bysurname {};
 struct Byphone {};
 struct Bykey {};
+struct PhoneChange : public std::unary_function<Rec, void> {
+	std::string p; PhoneChange(const std::string& _p) : p(_p) {}
+	void operator()(Rec& r) { r.phone = p; }
+};
 
 typedef boost::multi_index_container<
 	Rec,
 	boost::multi_index::indexed_by<
-		boost::multi_index::random_access<>,
-		boost::multi_index::hashed_non_unique<
-			boost::multi_index::tag<Byname>, boost::multi_index::member<Rec, std::string, &Rec::name>
+		//boost::multi_index::random_access<>,
+		boost::multi_index::ordered_unique<
+			boost::multi_index::tag<Bysurname>, boost::multi_index::member<Rec, std::string, &Rec::surname>,
+			std::less<std::string>
 		>,
 		boost::multi_index::hashed_non_unique<
-		boost::multi_index::tag<Bysurname>, boost::multi_index::member<Rec, std::string, &Rec::surname>
+			boost::multi_index::tag<Byname>, boost::multi_index::member<Rec, std::string, &Rec::name>
 		>,
 		boost::multi_index::hashed_non_unique<
 			boost::multi_index::tag<Byphone>, boost::multi_index::member<Rec,std::string, &Rec::phone>
@@ -69,32 +77,50 @@ void find_phone(Store store, std::string Name)
 	while (it0 != it1) { std::cout << (*it0).phone << ", "; ++it0; }
 }
 
+void show_all(Store store) {
+	auto it = store.begin();
+	auto it0 = store.end();
+	while (it != it0) {
+		std::cout << (*it).surname << " " << (*it).name << ": " << (*it).phone << std::endl;
+		++it;
+	}
+}
+
+Rec show_index(Store store, int index) {
+	auto it = store.begin();
+	for (int i = 0; i < index; i++) {
+		++it;
+	}
+	return (*it);
+}
+
+
 int main()
 {
 	Store store;
 	Rec r1 = { "Basilio", "Pupkinio", "022" };
-	Rec r2 = { "Vasya", "Pupkin",     "0223" };
-	Rec r3 = { "Basilio" , "Pupkinio",     "0223" };
+	Rec r2 = { "Vasya", "Zdsds",     "0223" };
+	Rec r3 = { "Basilio" , "Pupkinioo",     "0223" };
 
-	store.push_back(r1);
-	store.push_back(r2);
-	store.push_back(r3);
+	store.insert(r1);
+	store.insert(r2);
+	store.insert(r3);\
 
+	std::cout << "find_phone" << std::endl;
 	find_phone(store, "Basilio Pupkinio");
 	std::cout << std::endl;
 
+	std::cout << std::endl  << "find_name" << std::endl;
 	find_name(store, "0223");
-	std::cout << std::endl << store[1].name << " owns these number " << store[1].phone << std::endl;
+	std::cout << std::endl;
 
-	std::vector < std::string> s;
-	s.push_back("Pupkinio");
-	s.push_back("Pupkin");
-	s.push_back("Gimaev");
-	s.push_back("gimaev");
-	std::sort(s.begin(), s.end());
-	for (int i = 0; i < 4; i++) {
-		std::cout << s[i] << std::endl;
-	}
+	std::cout << std::endl << "show_all" << std::endl;
+	show_all(store);
+
+	std::cout << std::endl  << "show_index" << std::endl;
+	std::cout << show_index(store, 1).surname << " " << show_index(store, 1).name
+		<< ": " << show_index(store, 1).phone << std::endl;
+	
 	return 0;
 }
 
