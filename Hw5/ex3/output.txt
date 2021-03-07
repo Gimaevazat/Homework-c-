@@ -1,0 +1,33 @@
+Kerr, Kenny
+Don't valid name
+------------------------
+gimevazat@icloud.com
+Valid name | @icloud.com
+------------------------
+grre@gmaikdfkds.ru
+Valid name | @gmaikdfkds.ru
+------------------------
+_rfwgf@wefwe.com
+Valid name | @wefwe.com
+------------------------
+weee@icloud.gghghghgh
+Don't valid name
+------------------------
+gfd&rfr@fgk.ru
+Don't valid name
+------------------------
+re.re@icloud.com
+Valid name | @icloud.com
+------------------------
+re..re@icloud.com
+Don't valid name
+------------------------
+gimaev@icloud.ru
+Valid name | @icloud.ru
+------------------------
+gimaev.ai@icloud.com
+Valid name | @icloud.com
+------------------------
+
+Don't valid name
+------------------------
