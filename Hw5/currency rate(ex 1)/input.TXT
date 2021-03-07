@@ -1,0 +1,6 @@
+1 usd
+1 eur
+100 huf
+566 jpy
+5000 brl
+300 gbp

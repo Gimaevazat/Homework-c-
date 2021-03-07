@@ -11,6 +11,7 @@
 #include <numeric>
 #include <string_view>
 #include <map>
+#include <fstream>
 //------------------------------JSON
 using json = nlohmann::json;
 
@@ -73,10 +74,10 @@ long double price_in_RUB(std::string currency) {//return price of currency
 const std::map <std::string, std::string> list_locale = { 
 	{"USD", "en_US.UTF-8"},
 	{"JPY","ja_JP.UTF-8" },
-	{"EUR", "de_DE.UTF - 8"},
-	{"AUD","en_AU.UTF - 8"},
+	{"EUR", "de_de.UTF-8"},
+	{"AUD","en_AU.UTF-8"},
 	{"AZN" , "az_AZ.UTF-8"},
-	{"GBP", "en_GB.UTF - 8"},
+	{"GBP", "en_GB.UTF-8"},
 	{"AMD", "hy_AM.UTF-8"},
 	{"BYN", "be_BY.UTF-8"},
 	{"BGN", "bg_BG.UTF-8"},
@@ -120,25 +121,37 @@ std::pair<std::string, std::string> give_locale(std::string input_string)
 
 void show(std::string input_string)
 {
+	std::ofstream out("D:\\Homework-c-\\Hw5\\currency rate(ex 1)\\output.txt", std::ios::app);
+
 	std::istringstream s(input_string);
 	std::string input_string_copy = input_string;
 
 	std::pair<std::string, std::string> pair = give_locale(input_string_copy);
 
-	s.imbue(std::locale(pair.first));
-	std::cout.imbue(std::locale(pair.first));
+	//s.imbue(std::locale(pair.first));
+	
 
 	long double price;
+	std::string s_price;
 
 	s >> std::get_money(price, false);
+	out.imbue(std::locale(pair.first));
+	out << std::showbase << std::put_money(price, false) << " = ";
+	price *= price_in_RUB(pair.second);
 
+	out.imbue(std::locale("ru_RU.utf8"));
+	out << std::showbase << std::put_money(price, false) << std::endl;
+
+	/*
 	std::cout << std::showbase << std::put_money(price, false) << " = ";
 
 	price *= price_in_RUB(pair.second);
 
 	std::cout.imbue(std::locale("ru_RU.utf8"));
 	std::cout << std::showbase << std::put_money(price, false);
+	*/
 }
+
 
 
 
@@ -147,11 +160,29 @@ int main()
 
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
-
+	std::ifstream in("D:\\Homework-c-\\Hw5\\currency rate(ex 1)\\input.txt");
+	
+	
+	/*
 	std::string input_string;
 	std::getline(std::cin, input_string);
 
 	show(input_string);
+	*/
+
+	while (in)
+	{
+		std::string line;
+
+		std::getline(in, line);
+		if (line != "") {
+			std::cout << line << std::endl;
+			show(line);
+		}
+	}
+
+	in.close();
+	
 	
 	return 0;
 }
