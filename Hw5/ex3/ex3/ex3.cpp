@@ -9,7 +9,7 @@
 
 
 bool is_valid_email_id(std::string str) {
-    static const std::regex r(R"(\w+\.?\w*@\w+\.(?:com|in|ru))");
+    static const std::regex r(R"(\w+\.?\w*@\w+\.([[:alpha:]]+))");
     return regex_match(str.data(), r);
 }
 

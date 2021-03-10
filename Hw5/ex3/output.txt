@@ -11,7 +11,7 @@ _rfwgf@wefwe.com
 Valid name | @wefwe.com
 ------------------------
 weee@icloud.gghghghgh
-Don't valid name
+Valid name | @icloud.gghghghgh
 ------------------------
 gfd&rfr@fgk.ru
 Don't valid name
@@ -27,6 +27,9 @@ Valid name | @icloud.ru
 ------------------------
 gimaev.ai@icloud.com
 Valid name | @icloud.com
+------------------------
+gimaev.ai@phystech.edu
+Valid name | @phystech.edu
 ------------------------
 
 Don't valid name
