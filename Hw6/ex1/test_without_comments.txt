@@ -1,0 +1,13 @@
+#include <iostream> 
+int main()
+{ 
+	std::cout << "Hello, \"\"M\"  world! // again :)" << std::endl; 
+	
+	int x; 
+	
+	int y; 
+	
+	std::string s = "Hello, \"\"M\" 
+ world! // again :)" << std::endl; 
+} 
+

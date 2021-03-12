@@ -1,0 +1,11 @@
+{
+    "address": {
+        "city": "Kiev",
+        "country": "Ukraine"
+    },
+    "person": {
+        "age": 45,
+        "name": "Oleg",
+        "surname": "Pak"
+    }
+}
